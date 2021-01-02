@@ -1,10 +1,22 @@
 import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Home from './Pages/HomeScreen/Home';
+import About from './Pages/AboutScreen/About';
 
-function App() {
+function App() {  
+  const [Step, setStep] = useState(0);
+  const changePages = () => {
+    if (Step) {
+      setStep(0)
+    } else {
+      setStep(1)
+    }
+  }
+
   return (
-    <div className="App">
-      <header className="App-header">
+    <div onClick={changePages} className="App">
+      {/* <header className="App-header">
         <img src={logo} className="App-logo" alt="logo" />
         <p>
           Edit <code>src/App.js</code> and save to reload.
@@ -17,7 +29,8 @@ function App() {
         >
           Learn React
         </a>
-      </header>
+      </header> */}
+      {Step === 0 ? <Home />: <About />}
     </div>
   );
 }
